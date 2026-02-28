@@ -1,0 +1,416 @@
+/**
+ * Premium Digital Visiting Card CSS
+ * Font: Outfit
+ * Design: Light theme, Glassmorphism, Micro-animations, Glowing CTA
+ */
+
+:root {
+    --bg-dark: #ffffff;
+    /* pure white background */
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --whatsapp-color: #25D366;
+    --facebook-color: #1877F2;
+    --instagram-bg: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    --primary-glow: rgba(59, 130, 246, 0.3);
+    --whatsapp-glow: rgba(37, 211, 102, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-main);
+    overflow: hidden;
+    /* For background shapes */
+    position: relative;
+    padding: 20px;
+}
+
+/* Background Animated Shapes */
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    animation: float 10s infinite ease-in-out alternate;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: #3b82f6;
+    top: -50px;
+    left: -100px;
+    animation-delay: 0s;
+    opacity: 0.7;
+}
+
+.shape-2 {
+    width: 400px;
+    height: 400px;
+    background: #8b5cf6;
+    bottom: -100px;
+    right: -100px;
+    animation-delay: -3s;
+    opacity: 0.7;
+}
+
+.shape-3 {
+    width: 250px;
+    height: 250px;
+    background: #ec4899;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -5s;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(-30px) scale(1.1);
+    }
+}
+
+/* Main Container */
+.card-container {
+    width: 100%;
+    max-width: 400px;
+    /* Mobile width optimized */
+    z-index: 10;
+    perspective: 1000px;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 30px 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    /* Softer shadow for light mode */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile Section */
+.profile-header {
+    text-align: center;
+}
+
+.profile-img-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, #3b82f6, #ec4899);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--bg-dark);
+}
+
+.name {
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+}
+
+.designation {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* Info Section (Address) */
+.info-section {
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 16px;
+    padding: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-box {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.05);
+    /* darker for white bg */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #3b82f6;
+}
+
+.info-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-text .label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.info-text .value {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Primary CTA */
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-whatsapp {
+    background: var(--whatsapp-color);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+    background: #20b858;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--whatsapp-glow);
+}
+
+/* Glowing Animation for primary CTA */
+.glowing {
+    animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* Social Grid */
+.social-title {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.social-grid {
+    display: flex;
+    gap: 12px;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 10px;
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.social-btn i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.social-btn:hover {
+    background: rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+
+.social-btn:hover i {
+    transform: scale(1.1);
+}
+
+.social-btn.facebook:hover i {
+    color: var(--facebook-color);
+}
+
+.social-btn.instagram:hover i {
+    background: var(--instagram-bg);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Footer / Action */
+.card-footer {
+    padding-top: 15px;
+    border-top: 1px solid var(--card-border);
+}
+
+.btn-save-contact {
+    width: 100%;
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--card-border);
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-save-contact:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjust for purely aesthetic on small screens */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .glass-card {
+        padding: 25px 15px;
+    }
+
+    .name {
+        font-size: 1.5rem;
+    }
+}
+
+/* Desktop & Tablet Layout: Horizontal Card */
+@media (min-width: 768px) {
+    .card-container {
+        max-width: 750px;
+    }
+
+    .glass-card {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        grid-template-rows: auto auto auto auto;
+        gap: 20px 30px;
+        padding: 40px;
+        align-items: center;
+    }
+
+    .profile-header {
+        grid-column: 1 / 2;
+        grid-row: 1 / 5;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-right: 1px solid var(--card-border);
+        padding-right: 30px;
+        margin-bottom: 0;
+    }
+
+    .profile-img-wrapper {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 25px;
+    }
+
+    .name {
+        font-size: 2rem;
+    }
+
+    .info-section {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    .social-section {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+
+    .cta-section {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+    }
+
+    .card-footer {
+        grid-column: 2 / 3;
+        grid-row: 4 / 5;
+        border-top: none;
+        padding-top: 0;
+    }
+
+    .social-title {
+        text-align: left;
+    }
+}
