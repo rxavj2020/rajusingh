@@ -104,12 +104,12 @@ body {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--card-border);
     border-radius: 24px;
-    padding: 30px 20px;
+    padding: 0;
+    overflow: hidden;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
     /* Softer shadow for light mode */
     display: flex;
     flex-direction: column;
-    gap: 25px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -118,19 +118,44 @@ body {
     box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.2);
 }
 
+/* Cover Photo & Card Body Setup */
+.cover-photo {
+    width: 100%;
+    height: 130px;
+    position: relative;
+    background: #e2e8f0;
+}
+
+.cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 0 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
 /* Profile Section */
 .profile-header {
     text-align: center;
+    position: relative;
+    margin-top: -55px;
+    z-index: 2;
 }
 
 .profile-img-wrapper {
     position: relative;
     width: 110px;
     height: 110px;
-    margin: 0 auto 15px;
+    margin: 0 auto 10px;
     border-radius: 50%;
     padding: 4px;
-    background: linear-gradient(135deg, #3b82f6, #ec4899);
+    background: var(--bg-dark);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .profile-img {
@@ -138,7 +163,7 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid var(--bg-dark);
+    border: 2px solid var(--bg-dark);
 }
 
 .name {
@@ -342,8 +367,8 @@ body {
         padding: 10px;
     }
 
-    .glass-card {
-        padding: 25px 15px;
+    .card-body {
+        padding: 0 15px 25px;
     }
 
     .name {
@@ -358,11 +383,20 @@ body {
     }
 
     .glass-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cover-photo {
+        height: 200px;
+    }
+
+    .card-body {
         display: grid;
         grid-template-columns: 1fr 1.5fr;
         grid-template-rows: auto auto auto auto;
         gap: 20px 30px;
-        padding: 40px;
+        padding: 0 40px 40px;
         align-items: center;
     }
 
@@ -372,10 +406,12 @@ body {
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        align-items: center;
         border-right: 1px solid var(--card-border);
         padding-right: 30px;
         margin-bottom: 0;
+        margin-top: -100px;
     }
 
     .profile-img-wrapper {
